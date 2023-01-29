@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appartement{% endblock %}
+
+{% block body %}
+    <h1>Appartement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ appartement.id }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ appartement.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ appartement.ville }}</td>
+            </tr>
+            <tr>
+                <th>Montantcharge</th>
+                <td>{{ appartement.montantcharge }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_appartement_index') }}">Retour à la Liste</a>
+
+    <a href="{{ path('app_appartement_edit', {'id': appartement.id}) }}">Modifier</a>
+{% endblock %}

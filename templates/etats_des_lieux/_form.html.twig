@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+    <div class="form-group">
+        {{ form_row(form.dateentree,{'attr':{'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.remarque, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    
+    <button class="btn {{ button_color|default('btn-outline-primary') }}  my-4"> {{ button_label|default('Save EtatsDesLieux') }}</button>
+{{ form_end(form) }}

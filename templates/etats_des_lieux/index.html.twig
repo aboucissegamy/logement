@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EtatsDesLieux index{% endblock %}
+
+{% block body %}
+    <h1>EtatsDesLieux</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dateentree</th>
+                <th>Remarque</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etats_des_lieux in etats_des_lieuxes %}
+            <tr>
+                <td>{{ etats_des_lieux.id }}</td>
+                <td>{{ etats_des_lieux.dateentree }}</td>
+                <td>{{ etats_des_lieux.remarque }}</td>
+                <td>
+                    <form method="post" action="{{ path('app_etats_des_lieux_delete', {'id': etats_des_lieux.id}) }}" onsubmit="return confirm('Voulez vous vraiment supprimer un element?');">
+                        <a
+                            class="btn btn-outline-info"
+                            href="{{ path('app_etats_des_lieux_show', {'id': etats_des_lieux.id}) }}">
+                            afficher
+                        </a>
+                        <a
+                            class="btn btn-outline-success"
+                            href="{{ path('app_etats_des_lieux_edit', {'id': etats_des_lieux.id}) }}">
+                            modifier
+                        </a>
+
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ etats_des_lieux.id) }}">
+                        <button class="btn btn-outline-danger">supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+</div>
+{% endblock %}

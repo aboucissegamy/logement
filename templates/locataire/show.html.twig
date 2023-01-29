@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locataire{% endblock %}
+
+{% block body %}
+    <h1>Locataire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ locataire.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ locataire.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ locataire.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Adressse</th>
+                <td>{{ locataire.adressse }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ locataire.ville }}</td>
+            </tr>
+            <tr>
+                <th>Solde</th>
+                <td>{{ locataire.solde }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_locataire_index') }}">Retour à la Liste</a>
+
+    <a href="{{ path('app_locataire_edit', {'id': locataire.id}) }}">Modifier</a>
+
+{% endblock %}

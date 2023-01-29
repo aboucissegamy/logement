@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locataire index{% endblock %}
+
+{% block body %}
+    <h1>Liste des locataires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adressse</th>
+                <th>Ville</th>
+                <th>Solde</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for locataire in locataires %}
+            <tr>
+                <td>{{ locataire.id }}</td>
+                <td>{{ locataire.nom }}</td>
+                <td>{{ locataire.prenom }}</td>
+                <td>{{ locataire.adressse }}</td>
+                <td>{{ locataire.ville }}</td>
+                <td>{{ locataire.solde }}</td>
+                <td>
+                    <form method="post" action="{{ path('app_locataire_delete', {'id': locataire.id}) }}" onsubmit="return confirm('Voulez vous vraiment supprimer ce locataire?');">
+                        <a
+                            class="btn btn-outline-info"
+                            href="{{ path('app_locataire_show', {'id': locataire.id}) }}">
+                            afficher
+                        </a>
+                        <a
+                            class="btn btn-outline-success"
+                            href="{{ path('app_locataire_edit', {'id': locataire.id}) }}">
+                            modifier
+                        </a>
+
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ locataire.id) }}">
+                        <button class="btn btn-outline-danger">supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+</div>
+{% endblock %}

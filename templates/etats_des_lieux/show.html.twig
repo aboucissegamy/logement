@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EtatsDesLieux{% endblock %}
+
+{% block body %}
+    <h1>EtatsDesLieux</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ etats_des_lieux.id }}</td>
+            </tr>
+            <tr>
+                <th>Dateentree</th>
+                <td>{{ etats_des_lieux.dateentree }}</td>
+            </tr>
+            <tr>
+                <th>Remarque</th>
+                <td>{{ etats_des_lieux.remarque }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_etats_des_lieux_index') }}">Retour à la Liste</a>
+
+    <a href="{{ path('app_etats_des_lieux_edit', {'id': etats_des_lieux.id}) }}">Modifier</a>
+
+    
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appartement index{% endblock %}
+
+{% block body %}
+    <h1>Listes des Appartements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Montantcharge</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appartement in appartements %}
+            <tr>
+                <td>{{ appartement.id }}</td>
+                <td>{{ appartement.adresse }}</td>
+                <td>{{ appartement.ville }}</td>
+                <td>{{ appartement.montantcharge }}</td>
+                <td>
+                    <form method="post" action="{{ path('app_appartement_delete', {'id': appartement.id}) }}" onsubmit="return confirm('Voulez vous vraiment supprimer un appartement?');">
+                        <a
+                            class="btn btn-outline-info"
+                            href="{{ path('app_appartement_show', {'id': appartement.id}) }}">
+                            afficher
+                        </a>
+                        <a
+                            class="btn btn-outline-success"
+                            href="{{ path('app_appartement_edit', {'id': appartement.id}) }}">
+                            modifier
+                        </a>
+
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ appartement.id) }}">
+                        <button class="btn btn-outline-danger">supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+</div>
+{% endblock %}
